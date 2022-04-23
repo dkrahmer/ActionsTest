@@ -77,7 +77,7 @@ Initialize()
 
 		if [[ "${MSBuildPath}" == "" ]]; then
 			echo "Could not find MSBuild.exe in any expected paths."
-			echo "Ensure MS Build Tools or Visual Studio Professional is installed. (MSBuild 16+ required)"
+			echo "Ensure MS Build Tools or Visual Studio Professional is installed. (MSBuild 15-16.* required / VS2017-VS2019)"
 			exit 1
 		fi
 
@@ -302,14 +302,14 @@ fi
 		cp MediaTesterLib/bin/Release/*.dll _output/MediaTesterLib/
 	fi
 
-	if [[ "$ENABLE_UNIT_TESTS" == "true" ]]; then
-		if [[ "$RUN_UNIT_TESTS_FRAMEWORK" == "true" ]]; then
-			TestFramework
-		fi
-		if [[ "$RUN_UNIT_TESTS_CORE" == "true" ]]; then
-			TestCore
-		fi
-	fi
+	#if [[ "$ENABLE_UNIT_TESTS" == "true" ]]; then
+	#	if [[ "$RUN_UNIT_TESTS_FRAMEWORK" == "true" ]]; then
+	#		TestFramework
+	#	fi
+	#	if [[ "$RUN_UNIT_TESTS_CORE" == "true" ]]; then
+	#		TestCore
+	#	fi
+	#fi
 
 	if [[ "$IS_UNRELEASE" == "true" ]]; then
 		UnPrepareProjectsForRelease
