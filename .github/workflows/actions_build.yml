@@ -34,7 +34,10 @@ jobs:
 
     - name: Restore nuget packages
       run:  |
+        echo "$GITHUB_WORKSPACE"
         cd "$GITHUB_WORKSPACE"
+        dir
+        ls
         ./build.sh --automation-mode --msbuild-path-2017 MSBuild.exe --restore
 
     - name: Build
