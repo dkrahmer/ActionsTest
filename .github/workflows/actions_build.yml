@@ -16,18 +16,21 @@ jobs:
         shell: bash
 
     steps:
-    - name: Pull code from git
-      uses: actions/checkout@v3
+    #- name: Pull code from git
+    #  uses: actions/checkout@v3
 
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.1
-      with:
-        vs-version: '[15,16)'
+#      with:
+#        vs-version: '[15,16)'
         
 #    - name: Setup .NET
 #      uses: actions/setup-dotnet@v2
 #      with:
 #        dotnet-version: 5.0.x
+
+    - name: Setup Nuget
+      uses: nuget/setup-nuget@v1
 
     - name: Restore nuget packages
       run:  |
