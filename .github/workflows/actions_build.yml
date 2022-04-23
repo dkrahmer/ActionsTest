@@ -52,20 +52,28 @@ jobs:
 #        cd "$GITHUB_WORKSPACE"
 #        ./build.sh --automation-mode --test-core
 
+    - name: Get artifact versions
+      shell: pwsh
+      run:  |
+        cd "$GITHUB_WORKSPACE"
+        echo "LIB_VER=$((Get-Item -Path '_output\MediaTesterGui\MediaTesterGui.exe').VersionInfo.ProductVersion)" >> $Env:GITHUB_ENV
+        echo "CLI_VER=$((Get-Item -Path '_output\MediaTesterCli\MediaTester.exe').VersionInfo.ProductVersion)" >> $Env:GITHUB_ENV
+        echo "GUI_VER=$((Get-Item -Path '_output\MediaTesterLib\KrahmerSoft.MediaTesterLib.dll').VersionInfo.ProductVersion)" >> $Env:GITHUB_ENV
+
     - name: Create artifact - MediaTesterLib
       uses: actions/upload-artifact@v3
       with:
-        name: MediaTesterLib${{ env.BUILD_VERSION_SUFFIX }}
+        name: MediaTesterLib-${{ env.LIB_VER }}
         path: _output/MediaTesterLib/*
 
     - name: Create artifact - MediaTesterCli
       uses: actions/upload-artifact@v3
       with:
-        name: MediaTesterCli${{ env.BUILD_VERSION_SUFFIX }}
+        name: MediaTesterCli-${{ env.CLI_VER }}
         path: _output/MediaTesterCli/*
 
     - name: Create artifact - MediaTesterGui
       uses: actions/upload-artifact@v3
       with:
-        name: MediaTesterGui${{ env.BUILD_VERSION_SUFFIX }}
+        name: MediaTesterGui-${{ env.GUI_VER }}
         path: _output/MediaTesterGui/*
