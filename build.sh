@@ -59,7 +59,7 @@ Initialize()
 
 	SlnFile="MediaTester.sln"
 
-	if [[ "$IS_BUILD_VS2019" == "true" ]]; then
+	if [[ "$IS_BUILD_VS2019" == "true" ]] && [[ "$MSBuildPath_VS2019" == "" ]]; then
 		# List of MSBuild paths. Preferred paths listed first.
 		MSBuildPath_VS2019=$(GetFirstFile \
 					"C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Current\Bin\MSBuild.exe" \
@@ -76,7 +76,7 @@ Initialize()
 		echo "Using MSBuild: ${MSBuildPath_VS2019}"
 	fi
 
-	if [[ "$IS_BUILD_VS2017" == "true" ]]; then
+	if [[ "$IS_BUILD_VS2017" == "true" ]] && [[ "$MSBuildPath_VS2017" == "" ]]; then
 		# List of MSBuild paths. Preferred paths listed first.
 		MSBuildPath_VS2017=$(GetFirstFile \
 					"C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\MSBuild\15.0\Bin\MSBuild.exe" \
