@@ -35,12 +35,12 @@ jobs:
     - name: Restore nuget packages
       run:  |
         cd "$GITHUB_WORKSPACE"
-        ./build.sh --automation-mode --msbuild-path-2017 MSBuild.exe --restore
+        ./build.sh --automation-mode --msbuild-path MSBuild.exe --restore
 
     - name: Build
       run:  |
         cd "$GITHUB_WORKSPACE"
-        ./build.sh --automation-mode --msbuild-path-2017 MSBuild.exe --build
+        ./build.sh --automation-mode --msbuild-path MSBuild.exe --build
 
 #    - name: Run unit tests for .NET Framework v4.6.2
 #      run:  |
@@ -52,7 +52,7 @@ jobs:
 #        cd "$GITHUB_WORKSPACE"
 #        ./build.sh --automation-mode --test-core
 
-    - name: Get artifact versions
+    - name: Get assembly versions
       shell: pwsh
       run:  |
         cd "$env:GITHUB_WORKSPACE"
