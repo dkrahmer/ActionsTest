@@ -68,7 +68,7 @@ Initialize()
 					)
 
 		if [[ "${MSBuildPath_VS2019}" == "" ]]; then
-			echo "Could not find MSBuild.exe in any expected paths."
+			echo "Could not find MSBuild.exe 2019 in any expected paths."
 			echo "Ensure MS Build Tools or Visual Studio 2019 Professional is installed. (MSBuild 16+ required)"
 			exit 1
 		fi
@@ -85,7 +85,7 @@ Initialize()
 					)
 
 		if [[ "${MSBuildPath_VS2017}" == "" ]]; then
-			echo "Could not find MSBuild.exe in any expected paths."
+			echo "Could not find MSBuild.exe 2017 in any expected paths."
 			echo "Ensure MS Build Tools or Visual Studio 2017 Professional is installed."
 			exit 1
 		fi
@@ -179,6 +179,16 @@ do
 	key="$1"
 
 	case $key in
+		--msbuild-path-2017)
+			shift
+			MSBuildPath_VS2017="$1"
+			shift
+			;;
+		--msbuild-path-2019)
+			shift
+			MSBuildPath_VS2019="$1"
+			shift
+			;;
 		--restore)
 			RUN_INITIALIZE=true
 			IS_BUILD_VS2017=true
