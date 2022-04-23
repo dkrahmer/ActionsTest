@@ -60,19 +60,19 @@ jobs:
         echo "CLI_VER=$((Get-Item -Path '_output\MediaTesterCli\MediaTester.exe').VersionInfo.ProductVersion)" >> $Env:GITHUB_ENV
         echo "GUI_VER=$((Get-Item -Path '_output\MediaTesterLib\KrahmerSoft.MediaTesterLib.dll').VersionInfo.ProductVersion)" >> $Env:GITHUB_ENV
 
-    - name: Create artifact - MediaTesterLib
+    - name: Create artifact - MediaTesterLib-v${{ env.LIB_VER }}
       uses: actions/upload-artifact@v3
       with:
         name: MediaTesterLib-${{ env.LIB_VER }}
         path: _output/MediaTesterLib/*
 
-    - name: Create artifact - MediaTesterCli
+    - name: Create artifact - MediaTesterCli-v${{ env.CLI_VER }}
       uses: actions/upload-artifact@v3
       with:
         name: MediaTesterCli-${{ env.CLI_VER }}
         path: _output/MediaTesterCli/*
 
-    - name: Create artifact - MediaTesterGui
+    - name: Create artifact - MediaTesterGui-v${{ env.GUI_VER }}
       uses: actions/upload-artifact@v3
       with:
         name: MediaTesterGui-${{ env.GUI_VER }}
