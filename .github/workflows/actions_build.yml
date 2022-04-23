@@ -55,10 +55,9 @@ jobs:
     - name: Get artifact versions
       shell: pwsh
       run:  |
-        cd "$GITHUB_WORKSPACE"
-        echo "LIB_VER=$((Get-Item -Path '_output\MediaTesterGui\MediaTesterGui.exe').VersionInfo.ProductVersion)" >> $Env:GITHUB_ENV
-        echo "CLI_VER=$((Get-Item -Path '_output\MediaTesterCli\MediaTester.exe').VersionInfo.ProductVersion)" >> $Env:GITHUB_ENV
-        echo "GUI_VER=$((Get-Item -Path '_output\MediaTesterLib\KrahmerSoft.MediaTesterLib.dll').VersionInfo.ProductVersion)" >> $Env:GITHUB_ENV
+        echo "LIB_VER=$((Get-Item -Path '${{ env.GITHUB_WORKSPACE }}\_output\MediaTesterGui\MediaTesterGui.exe').VersionInfo.ProductVersion)" >> $Env:GITHUB_ENV
+        echo "CLI_VER=$((Get-Item -Path '${{ env.GITHUB_WORKSPACE }}\_output\MediaTesterCli\MediaTester.exe').VersionInfo.ProductVersion)" >> $Env:GITHUB_ENV
+        echo "GUI_VER=$((Get-Item -Path '${{ env.GITHUB_WORKSPACE }}\_output\MediaTesterLib\KrahmerSoft.MediaTesterLib.dll').VersionInfo.ProductVersion)" >> $Env:GITHUB_ENV
 
     - name: Create artifact - MediaTesterLib
       uses: actions/upload-artifact@v3
