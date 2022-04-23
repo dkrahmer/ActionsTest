@@ -16,8 +16,8 @@ jobs:
         shell: bash
 
     steps:
-    #- name: Pull code from git
-    #  uses: actions/checkout@v3
+    - name: Pull code from git
+      uses: actions/checkout@v3
 
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1.1
@@ -32,24 +32,9 @@ jobs:
     - name: Setup Nuget
       uses: nuget/setup-nuget@v1
 
-    - name: Step 1
-      run:  |
-        echo "$GITHUB_WORKSPACE"
-
-    - name: Step 2
-      run:  |
-        cd "$GITHUB_WORKSPACE"
-
-    - name: Step 3
-      run:  |
-        dir
-
-    - name: Step 4
-      run:  |
-        ls
-
     - name: Restore nuget packages
       run:  |
+        cd "$GITHUB_WORKSPACE"
         ./build.sh --automation-mode --msbuild-path-2017 MSBuild.exe --restore
 
     - name: Build

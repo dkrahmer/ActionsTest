@@ -305,7 +305,8 @@ fi
 
 	if [[ "$RESTORE" == "true" ]]; then
 		#RunSolutionTarget "${SlnFile}" "Restore" "${MSBuildPath_VS2017}"
-		BuildTools/nuget restore "${SlnFile}"
+		#BuildTools/nuget.exe restore "${SlnFile}"
+		"$NUGET" restore "${SlnFile}"
 	fi
 
 	if [[ "$BUILD" == "true" ]]; then
